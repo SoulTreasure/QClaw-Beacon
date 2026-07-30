@@ -106,14 +106,58 @@ FEISHU_APP_ID=cli_xxxxxxxxxxxxxxxx
 FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-### Step 3：配置 QClaw Cron
+### Step 3：配置定时任务（按你的系统选一种）
 
-两个定时任务：
+需要配置两个定时任务：
 
 | 任务 | 频率 | 说明 |
 |---|---|---|
 | 拉取 + 发送 Pull & Send | 每 2 分钟 | 运行 `feishu_relay.js` |
 | 处理指令 Process Commands | 每 7 分钟 | QClaw 读取 inbox 并回复 |
+
+#### Windows（任务计划程序）
+
+**任务一：每 2 分钟拉取 + 发送**
+1. 打开「任务计划程序」→ 创建基本任务
+2. 名称：`烽火台-拉取发送`
+3. 触发器：选择「每日」→ 开始时间填当前时间 → 勾选「重复任务间隔」→ 选择「2 分钟」→ 持续时间选「无限期」
+4. 操作：启动程序 → 程序填 `node` → 参数填 `feishu_relay.js`（完整路径）
+5. 起始位置填脚本所在目录
+
+**任务二：每 7 分钟处理指令**
+同上，间隔改为「7 分钟」，程序填 `QClaw`（或你的 QClaw 启动命令）。
+
+#### macOS / Linux（cron）
+
+打开终端，依次执行：
+
+```bash
+# 编辑 crontab
+crontab -e
+
+# 按 i 进入编辑模式，粘贴以下内容：
+
+# ---- 烽火台 · 每 2 分钟拉取飞书消息并发送回复 ----
+*/2 * * * * cd /path/to/QClaw-Beacon && /usr/local/bin/node feishu_relay.js >> /tmp/beacon.log 2>&1
+
+# ---- 烽火台 · 每 7 分钟处理指令（由 QClaw 自动执行，可跳过） ----
+*/7 * * * * cd /path/to/QClaw-Beacon && /path/to/qclaw --poll-inbox >> /tmp/beacon_poll.log 2>&1
+
+# 按 ESC，然后输入 :wq 保存退出
+```
+
+> ⚠️ 把 `/path/to/QClaw-Beacon` 换成你实际的仓库路径。
+> ⚠️ 把 `/usr/local/bin/node` 换成你本机 `which node` 的结果。
+> 第二行（QClaw 轮询）通常由 QClaw 内置 cron 自动处理，可跳过。
+
+#### 验证是否运行
+
+```bash
+# Windows：打开「任务计划程序」→ 查看「运行中」
+# macOS/Linux：
+crontab -l        # 查看已注册的定时任务
+ps aux | grep feishu_relay  # 查看脚本是否在运行
+```
 
 详见 → [QUICKSTART.md](./QUICKSTART.md)
 
