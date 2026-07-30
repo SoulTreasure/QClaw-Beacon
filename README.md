@@ -158,8 +158,6 @@ FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - 🐛 **GitHub Issue**：Bug 报告、功能建议
 - 📧 **邮件**：`3286905927@qq.com`
 
-> 我们是中国人，本国友人优先。有任何问题、建议或合作想法，欢迎直接微信联系！🇨🇳
-
 ---
 
 ## License
