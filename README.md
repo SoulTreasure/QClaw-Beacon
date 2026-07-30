@@ -23,7 +23,7 @@
 📱 你打开飞书
     ↓ 在群里发：「帮我查一下今天的日计划」
 ⏱️ 2分钟内，群里自动收到回复：
-    「📋 心心今日计划 · 2026-07-30
+    「📋 QClaw 今日计划 · 2026-07-30
      【P0】…
      【P1】…」
 ```
@@ -84,10 +84,10 @@ FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ┌─────────────────────────────────────────────────────────┐
 │  飞书群 · Feishu Group                                  │
 │  用户发消息 → Bot → inbox.json                          │
-│  心心回复 ← Bot ← outbox.json                           │
+│  QClaw 回复 ← Bot ← outbox.json                        │
 └─────────────────────────────────────────────────────────┘
               ↑ feishu_relay.js (每 2 分钟 | Every 2 min)
-              ↑ QClaw Agent (心心 · Xinxin)
+              ↑ QClaw Agent
 ```
 
 **Append-only 文件**：数据只追加，不修改历史记录。两端永远往末尾加条目，**零冲突、崩溃可恢复**。
@@ -100,7 +100,7 @@ FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 |---|---|---|
 | `feishu_relay.js` | 核心中继脚本 | Core relay engine (Node.js) |
 | `config.example.js` | 配置文件示例 | Config template |
-| `MVP_MODE.md` | 完整使用手册 | Full usage guide |
+| `BEACON_MODE.md` | 完整使用手册 | Full usage guide |
 | `QUICKSTART.md` | 快速入门 | Quick start |
 | `ARCHITECTURE.md` | 技术架构详解 | Technical architecture |
 | `CHANGELOG.md` | 更新日志 | Changelog |
@@ -121,4 +121,4 @@ FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## License
 
-MIT License · SoulTreasure · 2026
+MIT License · 2026

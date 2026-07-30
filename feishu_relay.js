@@ -491,14 +491,14 @@ const Msg = {
   /** 判断是否应触发强制回复 */
   requiresReply(item) {
     if (item.priority === 'high') return true;
-    return /@_user_1|@心心|？|\?/i.test(item.text || '');
+    return /@_user_1|@QClaw|？|\?/i.test(item.text || '');
   },
 
   /** 添加签名（若已有签名则不重复添加） */
   sign(reply) {
-    const sig = '\n\n🌸 心心 · QClaw';
+    const sig = '\n\n— QClaw';
     if (!T.str(reply)) return sig;
-    return reply.includes('心心 · QClaw') ? reply : reply + sig;
+    return reply.includes('— QClaw') ? reply : reply + sig;
   },
 };
 
