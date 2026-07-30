@@ -152,7 +152,7 @@ FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ## 反馈与联系 | Feedback & Contact
 
-**🇨🇳 欢迎国内外进入AI圈的朋友，多多交流、互相学习！**
+**🇨🇳 欢迎国内外站内的朋友，多多交流、互相学习！**
 
 - 💬 **微信**（推荐，反馈最即时）：`wxid_qakb4voa8iyn12`
 - 🐛 **GitHub Issue**：Bug 报告、功能建议
